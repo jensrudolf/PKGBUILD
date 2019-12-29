@@ -1,0 +1,17 @@
+pkgbase = mma
+	pkgdesc = MMA - Musical MIDI Accompaniment is an accompaniment generator
+	pkgver = 19.08
+	pkgrel = 3
+	url = https://www.mellowood.ca/mma/
+	install = mma.install
+	arch = any
+	license = GPL
+	depends = python>=3.0.0
+	optdepends = timidity++: Play MIDI files,
+	optdepends = mma-songs: Additional songs archive
+	options = !strip
+	source = https://www.mellowood.ca/mma/mma-bin-19.08.tar.gz
+	sha1sums = 30592c7bee836b81982d9534738d086af7769587
+
+pkgname = mma
+
