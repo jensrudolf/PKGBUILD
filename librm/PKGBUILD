@@ -1,36 +1,33 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
+# Contributor: Jens Rudolf <jens.rudolf@gmx.net>
 
 pkgname=librm
 pkgver=2.1.1
 pkgrel=1
 pkgdesc="Router Manager library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.tabos.org/"
 license=('GPL2')
 
 depends=(glib2 gdk-pixbuf2 libsoup speex libxml2 libtiff spandsp json-glib libsndfile gupnp gssdp gstreamer gst-plugins-base libsecret libcapi)
-makedepends=(meson)
+makedepends=(meson ninja)
 
 options=('!emptydirs')
-source=(
-  "https://gitlab.com/tabos/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
-)
-sha512sums=(
-  'SKIP'
-)
+source=("https://gitlab.com/tabos/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+sha512sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${pkgname}-v${pkgver}"
-  meson --prefix /usr --buildtype=plain "builddir"
-  ninja -v -C "builddir"
+    cd "${srcdir}/${pkgname}-v${pkgver}"
+    meson --prefix /usr --buildtype=plain "builddir"
+    ninja -v -C "builddir"
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-v${pkgver}"
-  ninja -C "builddir" test
+    cd "${srcdir}/${pkgname}-v${pkgver}"
+    ninja -C "builddir" test
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-v${pkgver}"
-  DESTDIR="$pkgdir" ninja -C "builddir" install
+    cd "${srcdir}/${pkgname}-v${pkgver}"
+    DESTDIR="$pkgdir" ninja -C "builddir" install
 }
