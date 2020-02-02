@@ -2,7 +2,7 @@
 # Contributor: Jens Rudolf <jens.rudolf@gmx.net>
 
 pkgname=librm
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Router Manager library"
 arch=('x86_64')
